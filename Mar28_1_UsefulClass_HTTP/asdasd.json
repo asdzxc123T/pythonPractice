@@ -1,0 +1,71 @@
+{
+    "CardBusStatisticsServiceNew": {
+        "list_total_count": 36965,
+        "RESULT": {
+            "CODE": "INFO-000",
+            "MESSAGE": "정상 처리되었습니다"
+        },
+        "row": [
+            {
+                "USE_YMD": "20150101",
+                "RTE_ID": "11110001",
+                "RTE_NO": "100",
+                "RTE_NM": "100번(하계동~용산구청)",
+                "STOPS_ID": "100000003",
+                "STOPS_ARS_NO": "01003",
+                "SBWY_STNS_NM": "명륜3가.성대입구",
+                "GTON_TNOPE": 64.0,
+                "GTOFF_TNOPE": 102.0,
+                "REG_YMD": "20151228"
+            },
+            {
+                "USE_YMD": "20150101",
+                "RTE_ID": "11110001",
+                "RTE_NO": "100",
+                "RTE_NM": "100번(하계동~용산구청)",
+                "STOPS_ID": "990008612",
+                "STOPS_ARS_NO": "~",
+                "SBWY_STNS_NM": "이촌동두산위브트레지움.한강대우아파트",
+                "GTON_TNOPE": 131.0,
+                "GTOFF_TNOPE": 36.0,
+                "REG_YMD": "20151228"
+            },
+            {
+                "USE_YMD": "20150101",
+                "RTE_ID": "11110001",
+                "RTE_NO": "100",
+                "RTE_NM": "100번(하계동~용산구청)",
+                "STOPS_ID": "990008691",
+                "STOPS_ARS_NO": "~",
+                "SBWY_STNS_NM": "이촌동한강맨션.이촌역",
+                "GTON_TNOPE": 103.0,
+                "GTOFF_TNOPE": 79.0,
+                "REG_YMD": "20151228"
+            },
+            {
+                "USE_YMD": "20150101",
+                "RTE_ID": "11110001",
+                "RTE_NO": "100",
+                "RTE_NM": "100번(하계동~용산구청)",
+                "STOPS_ID": "990008717",
+                "STOPS_ARS_NO": "~",
+                "SBWY_STNS_NM": "신용산초등학교",
+                "GTON_TNOPE": 94.0,
+                "GTOFF_TNOPE": 48.0,
+                "REG_YMD": "20151228"
+            },
+            {
+                "USE_YMD": "20150101",
+                "RTE_ID": "11110001",
+                "RTE_NO": "100",
+                "RTE_NM": "100번(하계동~용산구청)",
+                "STOPS_ID": "990008736",
+                "STOPS_ARS_NO": "~",
+                "SBWY_STNS_NM": "신용산초등학교",
+                "GTON_TNOPE": 17.0,
+                "GTOFF_TNOPE": 76.0,
+                "REG_YMD": "20151228"
+            }
+        ]
+    }
+}

@@ -1,0 +1,66 @@
+mongodb
+
+1. 서버로 쓸 자리에서
+https://www.mongodb.com/
+Products - Try Community Edition - Download
+
+2. 설치
+    Install MongoDB as Service 체크 해제
+        linux처럼 명령어 기반으로 하자
+    Install MongoDB Compass 체크 해제
+        DBeaver같은 툴
+        1) 그걸 서버에 설치할 필요는 없을텐데
+        2) 툴 말고 명령어 기반으로 하자
+        3) 그거 설치 성공 안되던데
+
+3. DB서버 ON
+[서버로 쓸 자리에서]
+3-1. DB 파일 저장될 폴더 확보
+    C:\ljw\mdb
+3-2. MongoDB 설치되어 있는 곳으로 가서 cmd
+    C:\Program Files\MongDB\Server\8.0\bin
+3-3. 서버 ON
+    mongod --dbpath 3-1 C:\ljw\mdb --bind_ip_all
+3-4. 서버 OFF
+    cmd 닫기
+    Ctrl + c
+서버 IP주소 :
+포트 번호 : 27017
+방화벽 잘 꺼져 있나
+
+4. 접속
+[본인 PC에서]
+4-1. 접속 프로그램 설치
+    https://www.mongodb.com/
+    Products - Try Community Edition
+    - Tools - MongoDB Shell - Download
+4-2. 압축 해제
+4-3. MongoDB Shell 있는 곳에 가서 cmd
+    C:\ljw\mongosh-2.5.0-win32-x64\bin
+4-4. 접속
+    mongosh 서버주소
+
+OracleDB
+    일반적인 데이터 보관
+    -> 보안이 중요
+    -> 관리자 계정, 유저 계정, 권한
+    -> 규칙을 정의하고 규칙에 맞게 데이터를 관리
+    OracleDB > DB > TableSpace > Table > Data
+               xe   ljwTS        apr07..
+    SQL로 제어
+
+MongoDB
+    비정형데이터 보관
+    -> 보안이 안 중요해도 됨
+    -> 계정 시스템이 있기는 한데...
+    -> 정의하지 않음, 처음 썼을 때 없으면 자동 생성
+    MongoDB > DB > JS배열 > JS객체
+              test 
+    JavaScript(PL, Python과 문법이 비슷)로 제어
+    조회 결과 : JS배열 + JS객체 -> JSON -> Python list + dict
+
+자기 이름으로 된 DB 만들자 - 없음
+그쪽으로 연결하자 - 
+    use DB명
+    db.JS배열.insert(JS객체);
+    db.JS배열.find();

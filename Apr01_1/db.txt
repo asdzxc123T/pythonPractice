@@ -1,0 +1,36 @@
+0-1. 관리자로 접속
+    instantclient폴더로 가서 cmd
+    sqlplus 관리자id/관리자pw@IP주소:포트번호/SID
+
+0-2. 예전 문법으로
+    alter session set "_ORACLE_SCRIPT"=true;
+
+0-3. 계정에게 tablespace 부여, 용량 제한 해제
+    alter user 아이디 default tablespace TS명 quota unlimited on TS명;
+0-4. 나오고
+    exit
+--------------------------------
+1. 본인 계정으로 접속
+    sqlplus id/pw@IP주소:포트번호/SID
+2. 어제 만든 테이블
+    (테이블 생성 : create table 테이블명 (변수명 변수타입, ...);)
+    desc mar31_snack;
+    insert into mar31_snack values('b', 0);
+    select * from mar31_snack;
+
+Python : 프로그래밍 언어
+IDLE : Python의 정품 작업툴 - 불편, 부실
+VSCode : 사제품 작업 툴
+
+OracleDB : DB 서버
+SQL*plus : OracleDB에 접속해서 작업 정품 툴
+        Windows의 cmd 기반
+            두 페이지
+            자동완성 x
+            한글 깨짐
+            한글 작업 불편
+            쌩 명령어 불편
+            필기...
+        -> 불편
+        사제품들은 관리자쪽 기능은 안됨
+DBeaver : 사제품

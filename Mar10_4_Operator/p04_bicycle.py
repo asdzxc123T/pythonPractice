@@ -1,0 +1,6 @@
+bi_round = float(input("바퀴 둘레 : "))
+front_gear = int(input("앞 기어 톱니수 : "))
+rear_gear = int(input("뒤 기어 톱니수 : "))
+cycle = float(input("발 구른 횟수 : "))
+print("---------------")
+print("이동 거리 : %.2f" % (cycle * front_gear / rear_gear * bi_round))

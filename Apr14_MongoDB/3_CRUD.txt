@@ -1,0 +1,154 @@
+- SQL 안 쓰고 JavaScript라는 PL로 제어
+    - DB를 JS 객체 취급, 테이블이 JS 배열, 데이터가 JS 객체, 필드 개념?
+        -> JSON...?
+    - "", '' 아무거나 쓰면 되는데,
+        Node.js측에서 만든 DB(Node.js가 '' 선호)
+    - JavaScript를 활용
+
+- 비정형 데이터용
+    -> 정의하는 게 없고, 처음 썼는데 없으면 자동 생성
+    -> 테이블 안 나눔, 변수가 있고 -> subquery/join - x
+---------------------------------------------------
+DB 생성 x
+DB 바꾸기
+    use [DB명];
+---------------------------------------------------
+테이블 만들기 x
+    -> 자료형 지정 x
+    -> PK, NN x
+테이블 삭제
+    db.테이블명.drop();
+---------------------------------------------------
+데이터 추가 - C
+    db.테이블명.insertOne(JS 객체);
+    db.apr14_student.insertOne(
+        {
+            s_name : "홍길동",
+            s_kor : 100,
+            s_eng : 80,
+            s_mat : 50
+        }
+    );
+    db.apr14_student.insertOne(
+        {
+            s_name : "김길동",
+            s_kor : 100,
+            s_eng : 80
+        }
+    );
+    db.apr14_student.insertOne(
+        {
+            s_name : "최길동",
+            s_kor : 100,
+            s_eng : 80,
+            s_mat : 50,
+            s_sci : 30
+        }
+    );
+
+d = datetime.today()
+var d = new Date();
+
+    db.apr14_student.insertOne(
+        {
+            s_name : "이길동",
+            s_kor : 100,
+            s_eng : 80,
+            s_mat : 50,
+            s_birthday : new Date()
+        }
+    );
+    db.apr14_student.insertOne(
+        {
+            s_name : "이길동",
+            s_kor : 100,
+            s_eng : 80,
+            s_mat : 50,
+            s_birthday : new Date(2000, 1, 1)
+        }
+    );
+---------------------------------------------------
+PK 
+1) BD/AI 분야에서 PK가 중요?
+2) 비정형데이터용 DB
+-> 딱히 안 중요
+_id(PK)를 알아서 만들어서 처리중 -> seq
+PK 사용
+    OracleDB : s_name 필드를 PK로 지정
+    MongoDB : PK를 쓸거면 _id를 사용
+    db.apr14_student.insertOne(
+        {
+            _id : "홍길동",
+            s_kor : 100,
+            s_eng : 80,
+            s_mat : 50
+        }
+    );
+---------------------------------------------------
+데이터 조회 - R
+    select * from apr14_snack;
+    db.테이블명.find();
+    db.apr14_snack.find();
+
+    select s_name from apr14_snack;
+    필드 개념이 없는데
+
+    select * from apr14_snack where s_price = 3000;
+    db.테이블명.find(JS객체);
+    db.apr14_snack.find({s_price : 3000});
+    
+    select * from apr14_snack where s_price >= 3000;
+    연산자
+        $gt $gte $ne $lte $lt $regex
+        >   >=   !=  <=   <   like
+    db.테이블명.find({필드명 : {"연산자" : 값}});
+    db.apr14_snack.find({s_price : {"$gte" : 3000}});
+
+    select * from apr14_snack where s_name like '%빼빼로%';
+    db.apr14_snack.find({s_name : {"$regex" : '빼'}});
+
+    select * from apr14_snack
+    where s_price >= 3000 or s_name like '%빼빼로%';
+
+    $and, $or
+    db.테이블명.find({"$and" : [JS 객체, JS 객체, ...]});
+    db.apr14_snack.find({
+        "$or" : [
+            {s_price : {"$gte" : 3000}},
+            {s_name : {"$regex" : "빼"}}
+        ]
+    });
+
+    select * from apr14_snack order by s_name;
+    db.테이블명.find(JS 객체).sort({"필드명" : 1, "필드명" : -1, ...});
+    1 : 오름차순
+    -1 : 내림차순
+    db.apr14_snack.find().sort({s_name : 1});
+
+    3000 <= 가격 <= 5000인 과자 조회
+    이름 가나다 -> 가격 비싼순
+    db.apr14_snack.find({
+        "$and" : [
+            {s_price : {"$gte" : 3000}},
+            {s_price : {"$lte" : 5000}}
+        ]
+    }).sort({s_name : 1, s_price : -1});
+
+    전체 가격 비싼순
+    ~~~.limit(3) - 3개만
+    ~~~.skip(2) - 앞에 2개 빼고
+    -> 1, 2번 빼고 3 ~ 6번
+    db.apr14_snack.find().sort({s_price : -1}).limit(3).skip(2);
+---------------------------------------------------
+데이터 수정 - U
+    db.테이블명.updateMany(찾을거, {"$set" : 바꿀거});
+    db.apr14_snack.updateMany(
+        {s_name : "빼빼로"},
+        {"$set" : {s_price : 0}}
+    );
+
+---------------------------------------------------
+데이터 삭제 - D
+    db.테이블명.deleteMany(찾을거);
+    delete from apr14_snack where s_name = '빼빼로';
+    db.apr14_snack.deleteMany({s_name : "빼빼로"});
